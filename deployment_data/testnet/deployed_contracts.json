@@ -1,0 +1,9 @@
+{
+    "multiFeedAdapter": "",
+    "priceFeeds": {
+        "eth": "",
+        "usdc": "",
+        "usdt": "",
+        "wbtc": ""
+    }
+}

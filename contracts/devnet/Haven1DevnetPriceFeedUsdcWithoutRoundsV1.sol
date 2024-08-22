@@ -5,11 +5,11 @@ pragma solidity ^0.8.4;
 import { PriceFeedWithoutRoundsForMultiFeedAdapter } from "@redstone-finance/on-chain-relayer/contracts/price-feeds/without-rounds/PriceFeedWithoutRoundsForMultiFeedAdapter.sol";
 import { IRedstoneAdapter } from "@redstone-finance/on-chain-relayer/contracts/core/IRedstoneAdapter.sol";
 
-contract Haven1PriceFeedEthWithoutRoundsV1 is
+contract Haven1DevnetPriceFeedUsdcWithoutRoundsV1 is
     PriceFeedWithoutRoundsForMultiFeedAdapter
 {
     function getDataFeedId() public view virtual override returns (bytes32) {
-        return bytes32("ETH");
+        return bytes32("USDC");
     }
 
     function getPriceFeedAdapter()
@@ -19,6 +19,6 @@ contract Haven1PriceFeedEthWithoutRoundsV1 is
         override
         returns (IRedstoneAdapter)
     {
-        return IRedstoneAdapter(0x5FbDB2315678afecb367f032d93F642f64180aa3);
+        return IRedstoneAdapter(0xeA1Cb7bc0DA51663F13625d7CFe29a94E566f256);
     }
 }

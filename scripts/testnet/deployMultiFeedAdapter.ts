@@ -6,6 +6,9 @@ import { ethers } from "hardhat";
 ================================================== */
 import { checkENV } from "@utils/checkENV";
 import { d } from "@utils/deploy";
+import { env, err } from "@utils/misc";
+import data from "../../deployment_data/devnet/deployed_contracts.json";
+import { writeJSON } from "@utils/json";
 
 /* CONSTANTS AND UTILS
 ================================================== */
@@ -15,14 +18,6 @@ const REQUIRED_VARS = [
     "TESTNET_EXPLORER",
     "TESTNET_DEPLOYER",
 ];
-
-function env(name: string): string {
-    return process.env[name] as string;
-}
-
-function err(msg: string): never {
-    throw new Error(msg);
-}
 
 /* SCRIPT
 ================================================== */
@@ -48,15 +43,27 @@ async function main() {
 
     /* Deploy
     ======================================== */
-    await d("Multi Feed Adapter", async function () {
+    const adapter = await d("Multi Feed Adapter", async function () {
         const f = await ethers.getContractFactory(
-            "Haven1MultiFeedAdapterWithoutRoundsV1",
+            "Haven1TestnetMultiFeedAdapterWithoutRoundsV1",
             deployer
         );
 
         const c = await f.deploy();
-        return await c.waitForDeployment();
+        await c.waitForDeployment();
+        await c.deploymentTransaction()?.wait(1);
+
+        return c;
     });
+
+    /* Write Output
+    ======================================== */
+    const out = {
+        ...data,
+        multiFeedAdapter: adapter.address,
+    };
+
+    writeJSON("deployment_data/testnet/deployed_contracts.json", out);
 }
 
 main().catch(error => {

@@ -9,11 +9,13 @@ import "solidity-docgen";
 
 import "tsconfig-paths/register";
 
+import "./tasks";
+
 import * as dotenv from "dotenv";
 
 dotenv.config();
 
-// testnet env
+// Testnet ENV
 const HAVEN_TESTNET_RPC = process.env.HAVEN_TESTNET_RPC || "";
 const TESTNET_CHAIN_ID = +process.env.TESTNET_CHAIN_ID!;
 const TESTNET_DEPLOYER = process.env.TESTNET_DEPLOYER || "";
@@ -21,7 +23,7 @@ const TESTNET_EXPLORER = process.env.TESTNET_EXPLORER || "";
 const TESTNET_EXPLORER_API = process.env.TESTNET_EXPLORER_API || "";
 const TESTNET_EXPLORER_API_KEY = process.env.TESTNET_EXPLORER_API_KEY || "";
 
-// devnet env
+// Devnet ENV
 const DEVNET_CHAIN_ID = +process.env.DEVNET_CHAIN_ID!;
 const HAVEN_DEVNET_RPC = process.env.HAVEN_DEVNET_RPC || "";
 const DEVNET_DEPLOYER = process.env.DEVNET_DEPLOYER || "";
@@ -29,7 +31,7 @@ const DEVNET_EXPLORER = process.env.DEVNET_EXPLORER || "";
 const DEVNET_EXPLORER_API = process.env.DEVNET_EXPLORER_API || "";
 const DEVNET_EXPLORER_API_KEY = process.env.DEVNET_EXPLORER_API_KEY || "";
 
-// type ext
+// Type Extension
 declare module "hardhat/types/config" {
     interface NetworksUserConfig {
         haven_testnet?: NetworkUserConfig;

@@ -2,16 +2,19 @@
 ================================================== */
 import { ethers, upgrades } from "hardhat";
 import {
-    Haven1PriceFeedEthWithoutRoundsV1,
-    Haven1PriceFeedUsdcWithoutRoundsV1,
-    Haven1PriceFeedUsdtWithoutRoundsV1,
-    Haven1PriceFeedWbtcWithoutRoundsV1,
+    Haven1TestnetPriceFeedEthWithoutRoundsV1,
+    Haven1TestnetPriceFeedUsdcWithoutRoundsV1,
+    Haven1TestnetPriceFeedUsdtWithoutRoundsV1,
+    Haven1TestnetPriceFeedWbtcWithoutRoundsV1,
 } from "@typechain/index";
 
 /* IMPORT CONSTANTS AND UTILS
 ================================================== */
 import { checkENV } from "@utils/checkENV";
 import { d } from "@utils/deploy";
+import { env, err } from "@utils/misc";
+import data from "../../deployment_data/testnet/deployed_contracts.json";
+import { writeJSON } from "@utils/json";
 
 /* CONSTANTS AND UTILS
 ================================================== */
@@ -21,14 +24,6 @@ const REQUIRED_VARS = [
     "TESTNET_EXPLORER",
     "TESTNET_DEPLOYER",
 ];
-
-function env(name: string): string {
-    return process.env[name] as string;
-}
-
-function err(msg: string): never {
-    throw new Error(msg);
-}
 
 /* SCRIPT
 ================================================== */
@@ -54,57 +49,79 @@ async function main() {
 
     /* Deploy
     ======================================== */
-    await d("Price Feed - ETH", async function () {
+    const eth = await d("Price Feed - ETH", async function () {
         const f = await ethers.getContractFactory(
-            "Haven1PriceFeedEthWithoutRoundsV1",
+            "Haven1TestnetPriceFeedEthWithoutRoundsV1",
             deployer
         );
 
         const c = (await upgrades.deployProxy(
             f
-        )) as unknown as Haven1PriceFeedEthWithoutRoundsV1;
+        )) as unknown as Haven1TestnetPriceFeedEthWithoutRoundsV1;
 
-        return await c.waitForDeployment();
+        await c.waitForDeployment();
+        await c.deploymentTransaction()?.wait(1);
+        return c;
     });
 
-    await d("Price Feed - USDC", async function () {
+    const usdc = await d("Price Feed - USDC", async function () {
         const f = await ethers.getContractFactory(
-            "Haven1PriceFeedUsdcWithoutRoundsV1",
+            "Haven1TestnetPriceFeedUsdcWithoutRoundsV1",
             deployer
         );
 
         const c = (await upgrades.deployProxy(
             f
-        )) as unknown as Haven1PriceFeedUsdcWithoutRoundsV1;
+        )) as unknown as Haven1TestnetPriceFeedUsdcWithoutRoundsV1;
 
-        return await c.waitForDeployment();
+        await c.waitForDeployment();
+        await c.deploymentTransaction()?.wait(1);
+        return c;
     });
 
-    await d("Price Feed - USDT", async function () {
+    const usdt = await d("Price Feed - USDT", async function () {
         const f = await ethers.getContractFactory(
-            "Haven1PriceFeedUsdtWithoutRoundsV1",
+            "Haven1TestnetPriceFeedUsdtWithoutRoundsV1",
             deployer
         );
 
         const c = (await upgrades.deployProxy(
             f
-        )) as unknown as Haven1PriceFeedUsdtWithoutRoundsV1;
+        )) as unknown as Haven1TestnetPriceFeedUsdtWithoutRoundsV1;
 
-        return await c.waitForDeployment();
+        await c.waitForDeployment();
+        await c.deploymentTransaction()?.wait(1);
+        return c;
     });
 
-    await d("Price Feed - wBTC", async function () {
+    const wbtc = await d("Price Feed - wBTC", async function () {
         const f = await ethers.getContractFactory(
-            "Haven1PriceFeedWbtcWithoutRoundsV1",
+            "Haven1TestnetPriceFeedWbtcWithoutRoundsV1",
             deployer
         );
 
         const c = (await upgrades.deployProxy(
             f
-        )) as unknown as Haven1PriceFeedWbtcWithoutRoundsV1;
+        )) as unknown as Haven1TestnetPriceFeedWbtcWithoutRoundsV1;
 
-        return await c.waitForDeployment();
+        await c.waitForDeployment();
+        await c.deploymentTransaction()?.wait(1);
+        return c;
     });
+
+    /* Write Output
+    ======================================== */
+    const out = {
+        ...data,
+        priceFeeds: {
+            eth: eth.address,
+            usdc: usdc.address,
+            usdt: usdt.address,
+            wbtc: wbtc.address,
+        },
+    };
+
+    writeJSON("deployment_data/testnet/deployed_contracts.json", out);
 }
 
 main().catch(error => {
