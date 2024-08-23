@@ -7,7 +7,7 @@ import { ethers } from "hardhat";
 import { checkENV } from "@utils/checkENV";
 import { d } from "@utils/deploy";
 import { env, err } from "@utils/misc";
-import data from "../../deployment_data/devnet/deployed_contracts.json";
+import data from "../../deployment_data/testnet/deployed_contracts.json";
 import { writeJSON } from "@utils/json";
 
 /* CONSTANTS AND UTILS
