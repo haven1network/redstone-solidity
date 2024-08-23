@@ -5,7 +5,13 @@
         "prettier:check": "npx prettier . --check",
         "prettier:write": "npx prettier . --write",
         "eslint": "npx eslint ./",
-        "lint": "npm run prettier:check && npm run eslint && npx hardhat check"
+        "lint": "npm run prettier:check && npm run eslint && npx hardhat check",
+        "deployAdapter:testnet": "npx hardhat run ./scripts/testnet/deployMultiFeedAdapter.ts --network haven_testnet",
+        "deployFeeds:testnet": "npx hardhat run ./scripts/testnet/deployFeeds.ts --network haven_testnet",
+        "deployAdapter:devnet": "npx hardhat run ./scripts/devnet/deployMultiFeedAdapter.ts --network haven_devnet",
+        "deployFeeds:devnet": "npx hardhat run ./scripts/devnet/deployFeeds.ts --network haven_devnet",
+        "verify:testnet": "npx hardhat verifyTestnet --network haven_testnet",
+        "verify:devnet": "npx hardhat verifyDevnet --network haven_devnet"
     },
     "devDependencies": {
         "@nomicfoundation/hardhat-toolbox": "^5.0.0",

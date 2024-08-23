@@ -1,0 +1,9 @@
+{
+    "multiFeedAdapter": "0xeA1Cb7bc0DA51663F13625d7CFe29a94E566f256",
+    "priceFeeds": {
+        "eth": "0xdB3fC8174CbcD37D8E17cc429Be0c655b35FD2D9",
+        "usdc": "0xe1a138186Bd3Eca67a720088a11716973fb3ed48",
+        "usdt": "0xd56E988C4ffd49d3a8A401f6Cc0755AdDF9811A2",
+        "wbtc": "0xAC390A1FFE9eE8B8e099F8B1648455A14C14D53a"
+    }
+}
