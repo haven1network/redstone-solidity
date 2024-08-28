@@ -19,6 +19,6 @@ contract Haven1DevnetPriceFeedUsdtWithoutRoundsV1 is
         override
         returns (IRedstoneAdapter)
     {
-        return IRedstoneAdapter(0xeA1Cb7bc0DA51663F13625d7CFe29a94E566f256);
+        return IRedstoneAdapter(0x8bdd76E874a1563e1453065B4Bc9522F073365fb);
     }
 }
