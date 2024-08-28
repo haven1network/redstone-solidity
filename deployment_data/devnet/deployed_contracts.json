@@ -1,9 +1,9 @@
 {
-    "multiFeedAdapter": "0xeA1Cb7bc0DA51663F13625d7CFe29a94E566f256",
+    "multiFeedAdapter": "0x8bdd76E874a1563e1453065B4Bc9522F073365fb",
     "priceFeeds": {
-        "eth": "0xdB3fC8174CbcD37D8E17cc429Be0c655b35FD2D9",
-        "usdc": "0xe1a138186Bd3Eca67a720088a11716973fb3ed48",
-        "usdt": "0xd56E988C4ffd49d3a8A401f6Cc0755AdDF9811A2",
-        "wbtc": "0xAC390A1FFE9eE8B8e099F8B1648455A14C14D53a"
+        "eth": "0xb04e799bB509844469fD47855b069d51F21a4287",
+        "usdc": "0x0Db4175D47A1b53D9AE943a3030EC8EcA5A1E301",
+        "usdt": "0x6afD04491037Ff62ACdb28248640FFafd7b36170",
+        "wbtc": "0x5FbFE58BbbB1357fB5f9E67b8368e9877D95e460"
     }
 }

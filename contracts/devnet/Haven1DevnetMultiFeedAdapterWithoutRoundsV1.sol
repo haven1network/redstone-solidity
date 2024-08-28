@@ -8,7 +8,7 @@ contract Haven1DevnetMultiFeedAdapterWithoutRoundsV1 is
     MultiFeedAdapterWithoutRoundsPrimaryProd
 {
     address internal constant MAIN_UPDATER_ADDRESS =
-        0x2E0084848522207544d83746d81886049678F812;
+        0xAd45c555Ea9D752EDe754105ad4664fB028a3b6d;
 
     function _validateBlockTimestamp(
         uint256 lastBlockTimestamp
