@@ -5,5 +5,11 @@
         "usdc": "0x0Db4175D47A1b53D9AE943a3030EC8EcA5A1E301",
         "usdt": "0x6afD04491037Ff62ACdb28248640FFafd7b36170",
         "wbtc": "0x5FbFE58BbbB1357fB5f9E67b8368e9877D95e460"
+    },
+    "mocks": {
+        "mockH1Feed": {
+            "address": "0xb21E36902bA053487c46281af47D5D324D017250",
+            "args": ["0x20a2Af43B9397442AA55A54b5E11CC3A6132477C", "120000000"]
+        }
     }
 }
