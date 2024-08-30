@@ -40,4 +40,8 @@ task("verifyDevnet", "Verifies the devnet contracts").setAction(async function (
     for (const [k, val] of Object.entries(data.priceFeeds)) {
         await v(`Price Feed - ${k}`, val, []);
     }
+
+    for (const [k, val] of Object.entries(data.mocks)) {
+        await v(`Price Feed - ${k}`, val.address, val.args);
+    }
 });
